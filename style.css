@@ -1,0 +1,23 @@
+.body {
+    display: flex;
+    flex-direction: column;
+}
+
+.row {
+    display: flex;
+    flex: 1;
+    max-width: 600px;
+    height: 150px;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 600px;
+}
+
+.child {
+    flex: 1;
+    background-color: grey;
+    border: black solid 1px;
+}
