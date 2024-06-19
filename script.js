@@ -25,19 +25,26 @@ function deleteBoard() {
         rows[currentIndex].remove();
     })}
 
-function chooseRandomRGB() {
+function chooseRandomRGBA(squareOpacity) {
     let r = Math.floor(Math.random()*256);
     let g = Math.floor(Math.random()*256);
     let b = Math.floor(Math.random()*256);
-    console.log(`rgb(${r},${g},${b})`);
-    return `rgb(${r},${g},${b})`
+   if (squareOpacity > 0) {
+        let a = squareOpacity - 0.1;
+    }
+    console.log(`rgb(${r},${g},${b},${a})`);
+    return `rgb(${r},${g},${b},${a})`;
 }
 
 // Apply hover effects
 container.addEventListener("mouseover", (e) => {
     if (e.target.id.substr(0,3) === "box") {
     let hoveredBox = document.querySelector(`#${e.target.id}`);
-    hoveredBox.style.backgroundColor = `${chooseRandomRGB()}`;
+    console.log(window.getComputedStyle(hoveredBox).opacity);
+    hoveredBox.style.backgroundColor = `${chooseRandomRGBA(window.getComputedStyle(hoveredBox).opacity)}`;
+    if (hoveredBox.style.opacity != 0) {
+        hoveredBox.style.opacity = 1 - hoveredBox.style.opacity - 0.1;
+    } 
     }
 })
 
