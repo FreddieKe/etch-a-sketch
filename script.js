@@ -29,8 +29,11 @@ function chooseRandomRGBA(squareOpacity) {
     let r = Math.floor(Math.random()*256);
     let g = Math.floor(Math.random()*256);
     let b = Math.floor(Math.random()*256);
-   if (squareOpacity > 0) {
-        let a = squareOpacity - 0.1;
+    let a = "" 
+    if (squareOpacity > 0) {
+        a = squareOpacity - 0.1;
+    } else {
+         a = 0;
     }
     console.log(`rgb(${r},${g},${b},${a})`);
     return `rgb(${r},${g},${b},${a})`;
@@ -42,11 +45,8 @@ container.addEventListener("mouseover", (e) => {
     let hoveredBox = document.querySelector(`#${e.target.id}`);
     console.log(window.getComputedStyle(hoveredBox).opacity);
     hoveredBox.style.backgroundColor = `${chooseRandomRGBA(window.getComputedStyle(hoveredBox).opacity)}`;
-    if (hoveredBox.style.opacity != 0) {
-        hoveredBox.style.opacity = 1 - hoveredBox.style.opacity - 0.1;
-    } 
-    }
-})
+    console.log(window.getComputedStyle(hoveredBox).opacity);
+    }})
 
 
 drawBoard(gridNumber);
